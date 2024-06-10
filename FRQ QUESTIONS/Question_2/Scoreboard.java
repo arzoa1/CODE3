@@ -19,12 +19,14 @@ public class Scoreboard {
 
   
   public void recordPlay (int score){
-    if (int score == 0){
+    if (score == 0){
       active = !active; 
     }
+      if(active){
+        score1+= score;
+      }
     else{
-      if (active)
-        score1+= ;
+      score2+=score;
     }
   }
   
@@ -38,9 +40,4 @@ public String getScore(){
   }
 }
 
-
-
-
-  
-  
 }
