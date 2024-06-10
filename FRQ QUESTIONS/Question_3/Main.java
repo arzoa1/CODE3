@@ -1,28 +1,41 @@
-import java.util.*;
-public class WordChecker{
-  private ArrayList<String> wordList;
+import java.util.ArrayList;
 
-  public WordChecker(ArrayList<String> w){
-    wordList = w;
-  }
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("2024 FRQ Q3");
 
-  public boolean isWordChain(){
-    for(int i = 1; i < wordList.size(); i++){
-      if(wordList.get(i).indexOf(wordList.get(i-1)) == -1){
-        return false;
-      }
-    }
-    return true;
-  }
+    ArrayList<String> list1 = new ArrayList<String>();
+    list1.add("an");
+    list1.add("band");
+    list1.add("band");
+    list1.add("abandon");
+    ArrayList<String> list2 = new ArrayList<String>();
+    list2.add("to");
+    list2.add("too");
+    list2.add("stool");
+    list2.add("tools");
+    
+    WordChecker test1 = new WordChecker(list1);
+    WordChecker test2 = new WordChecker(list2);
 
-  public ArrayList<String> createList(String target){
-    ArrayList<String> news = new ArrayList<String>();
-    for(int i = 0; i < wordList.size(); i++){
-      if(wordList.get(i).substring(0, target.length()).indexOf(target) == 0){
-        wordList.add(wordList.get(i).substring(target.length()));
-      }
-    }
-    return news;
+    // PART A TESTS
+    System.out.println(test1.isWordChain()); // expected result: true
+    System.out.println(test2.isWordChain()); // expected result: false
+
+    ArrayList<String> list3 = new ArrayList<String>();
+    list3.add("catch");
+    list3.add("bobcat");
+    list3.add("catchacat");
+    list3.add("cat");
+    list3.add("at");
+
+    WordChecker test3 = new WordChecker(list3);
+
+    // PART B TESTS
+    System.out.println(test3.createList("cat")); // ["ch", "chacat", ""]
+    System.out.println(test3.createList("catch")); // ["", "acat"]
+    System.out.println(test3.createList("dog")); // []
+    
+    
   }
-  
 }
