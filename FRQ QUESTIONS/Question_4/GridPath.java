@@ -15,18 +15,27 @@ public class GridPath {
     else if (col >= grid[row].length -1){
       return new Location(row +1, col);
     }
-    
+
+    if(grid[row+1][col] > grid[row][col+1]){
+      return new Location(row +1, col);
+    } else{
+      return new Location(row, col+1);
+    }
+ }
 
 
   
   // PART B
-public int sumPath(int row, int col) {
+public int sumPath (int row, int col) {
 int total = grid[row][col];
-  while (row < grid.length && col < grid[row].length){
-    Location next = getNextLoc(row, col);
-    total += grid[next.getRow()][next.getCol()];
+int r = row;
+int c = col;
+  
+  while (r!=grid.length-1 || c!=grid[0].length-1){
+    Location next = getNextLoc(r, c);
     row = next.getRow();
     col = next.getCol();
+    total += grid[r][c];
   }
   return total;
 }
